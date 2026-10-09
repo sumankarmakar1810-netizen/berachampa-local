@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14532d">
+<title>Berachampa Local | Grocery & Food Delivery</title>
+<style>
+:root{--green:#14532d;--green2:#166534;--lime:#dcfce7;--bg:#f5f7f4;--ink:#17211b;--muted:#647067;--card:#fff;--line:#e4e9e4;--orange:#f59e0b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:linear-gradient(135deg,#14532d,#15803d);color:white;padding:22px 16px 18px}
+.wrap{max-width:980px;margin:auto} .top{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;gap:10px;align-items:center}.logo{width:44px;height:44px;border-radius:14px;background:#ffffff24;display:grid;place-items:center;font-size:24px}.brand h1{font-size:19px;margin:0}.brand p{margin:3px 0 0;color:#d1fae5;font-size:12px}.cartbtn{border:0;border-radius:13px;padding:11px 13px;background:white;color:var(--green);font-weight:800}
+.hero{padding:24px 0 6px}.hero h2{font-size:clamp(25px,5vw,38px);line-height:1.1;margin:0 0 9px;max-width:600px}.hero p{margin:0;color:#dcfce7;font-size:14px}.notice{margin:16px 0 0;background:#ffffff1b;border:1px solid #ffffff2a;padding:10px 12px;border-radius:12px;font-size:12px}
+main{padding:18px 14px 40px}.searchrow{display:flex;gap:9px;margin-bottom:16px}.searchrow input{flex:1;min-width:0}.field,input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;width:100%;color:var(--ink)}button{font:inherit;cursor:pointer}.chips{display:flex;gap:8px;overflow:auto;padding-bottom:7px;margin-bottom:16px}.chip{border:1px solid var(--line);background:white;padding:9px 13px;border-radius:999px;white-space:nowrap;font-weight:700;color:#3b463e}.chip.active{background:var(--green);border-color:var(--green);color:white}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:16px 0 12px}.sectionhead h3{margin:0;font-size:20px}.sectionhead small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product{background:var(--card);border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 2px 8px #17211b05}.pemoji{height:104px;display:grid;place-items:center;background:linear-gradient(135deg,#ecfdf5,#fef3c7);font-size:47px}.pbody{padding:12px}.tag{font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--green2);font-weight:800}.pbody h4{margin:5px 0 4px;font-size:15px}.pbody p{margin:0;color:var(--muted);font-size:12px}.pfoot{display:flex;align-items:center;justify-content:space-between;gap:7px;margin-top:12px}.price{font-weight:850}.add{background:var(--green);color:white;border:0;border-radius:10px;padding:8px 11px;font-weight:800}.empty{grid-column:1/-1;background:white;border:1px dashed var(--line);border-radius:15px;padding:24px;text-align:center;color:var(--muted)}
+.panel{margin-top:22px;background:white;border:1px solid var(--line);border-radius:18px;padding:16px}.panel h3{margin:0 0 8px}.muted{color:var(--muted);font-size:13px;line-height:1.45}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.wide{grid-column:1/-1}.primary{background:var(--green);color:white;border:0;border-radius:12px;padding:13px 16px;font-weight:800;width:100%}.secondary{background:#eef7ef;color:var(--green);border:1px solid #cde8d1;border-radius:10px;padding:9px 12px;font-weight:750}.cartline,.orderline{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}.qty{display:flex;align-items:center;gap:7px}.qty button{border:1px solid var(--line);background:#f8faf8;border-radius:7px;width:25px;height:25px}.total{display:flex;justify-content:space-between;font-weight:850;font-size:17px;padding:14px 0}.tabs{display:flex;gap:8px;margin:18px 0 10px}.tab{flex:1;border:1px solid var(--line);background:white;border-radius:10px;padding:10px;font-weight:750}.tab.active{background:var(--lime);border-color:#86efac;color:var(--green)}
+.ordercard{border:1px solid var(--line);border-radius:13px;padding:12px;margin-top:10px}.status{font-size:11px;background:#fef3c7;color:#854d0e;padding:4px 8px;border-radius:999px;font-weight:800}.ordercard h4{margin:8px 0 4px}.orderactions{display:flex;gap:8px;margin-top:10px}.orderactions button{flex:1}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:18px 12px 28px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.pemoji{height:130px}.hero{padding-top:30px}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="top">
+    <div class="brand"><div class="logo">🛍️</div><div><h1>Berachampa Local</h1><p>Grocery • Food • Delivered nearby</p></div></div>
+    <button class="cartbtn" onclick="showCart()">🛒 Cart <span id="cartCount">0</span></button>
+  </div>
+  <div class="hero"><h2>Your neighbourhood, delivered.</h2><p>Daily groceries and local food, all in one place.</p><div class="notice">📍 Pilot area: Berachampa · Demo prices only · Orders are saved on this device</div></div>
+</div></header>
+<main class="wrap">
+  <div class="searchrow"><input id="search" placeholder="Search rice, eggs, biryani..." oninput="renderProducts()"><button class="secondary" onclick="document.getElementById('checkout').scrollIntoView({behavior:'smooth'})">Order details</button></div>
+  <div class="chips" id="chips"></div>
+  <div class="sectionhead"><h3 id="sectionTitle">Popular near you</h3><small id="itemCount"></small></div>
+  <div class="grid" id="products"></div>
+
+  <section class="panel" id="cartPanel">
+    <h3>🛒 Your cart</h3><p class="muted">Add items above. Delivery charge is estimated for this demo and should be confirmed before accepting a real order.</p>
+    <div id="cartItems"></div><div class="total"><span>Total estimate</span><span id="total">₹0</span></div>
+    <div class="formgrid" id="checkout">
+      <input id="custName" placeholder="Your name *" autocomplete="name">
+      <input id="custPhone" placeholder="Mobile number *" inputmode="tel" autocomplete="tel">
+      <input class="wide" id="custAddress" placeholder="Full delivery address in Berachampa *" autocomplete="street-address">
+      <select id="payment"><option value="Cash on Delivery">Cash on Delivery</option><option value="UPI on delivery">UPI on delivery</option></select>
+      <select id="deliverySlot"><option>As soon as possible</option><option>Within 1 hour</option><option>Schedule for later</option></select>
+      <textarea class="wide" id="notes" rows="2" placeholder="Landmark / notes (optional)"></textarea>
+      <button class="primary wide" onclick="placeOrder()">Place demo order</button>
+    </div>
+    <p class="muted" id="orderMsg"></p>
+  </section>
+
+  <section class="panel" id="adminPanel">
+    <h3>🔐 Owner / delivery dashboard (demo)</h3>
+    <p class="muted">This demo dashboard shows orders saved in this browser only. It is not a secure admin login and cannot receive orders from other people's phones until a backend is connected.</p>
+    <div class="tabs"><button class="tab active" id="tabOrders" onclick="setAdminTab('orders')">Orders</button><button class="tab" id="tabManage" onclick="setAdminTab('manage')">Manage demo items</button></div>
+    <div id="adminOrders"></div>
+    <div id="manageItems" hidden>
+      <p class="muted">Add a temporary product to test your catalogue.</p>
+      <div class="formgrid"><input id="newName" placeholder="Product name"><input id="newPrice" type="number" min="1" placeholder="Price ₹"><select id="newCat"><option>Grocery</option><option>Food</option></select><input id="newEmoji" placeholder="Emoji e.g. 🥚" maxlength="4"><button class="primary wide" onclick="addProduct()">Add demo product</button></div>
+    </div>
+  </section>
+</main>
+<footer>Berachampa Local · Prototype v1 · Not yet connected to live payments, maps, or a shared server.</footer>
+<script>
+const baseProducts=[
+{id:1,name:"Rice (1 kg)",cat:"Grocery",price:55,emoji:"🍚",desc:"Everyday staple"},
+{id:2,name:"Eggs (6 pcs)",cat:"Grocery",price:48,emoji:"🥚",desc:"Fresh tray eggs"},
+{id:3,name:"Potato (1 kg)",cat:"Grocery",price:30,emoji:"🥔",desc:"Daily kitchen essential"},
+{id:4,name:"Onion (1 kg)",cat:"Grocery",price:38,emoji:"🧅",desc:"For everyday cooking"},
+{id:5,name:"Cooking Oil (1 L)",cat:"Grocery",price:145,emoji:"🫗",desc:"Common kitchen oil"},
+{id:6,name:"Milk (500 ml)",cat:"Grocery",price:30,emoji:"🥛",desc:"Check brand and availability"},
+{id:7,name:"Chicken Biryani",cat:"Food",price:140,emoji:"🍛",desc:"Restaurant price to be confirmed"},
+{id:8,name:"Momos (8 pcs)",cat:"Food",price:70,emoji:"🥟",desc:"Steamed or fried, subject to availability"},
+{id:9,name:"Egg Roll",cat:"Food",price:45,emoji:"🌯",desc:"Local favourite"},
+{id:10,name:"Chowmein",cat:"Food",price:70,emoji:"🍜",desc:"Restaurant price to be confirmed"},
+{id:11,name:"Biscuits",cat:"Grocery",price:20,emoji:"🍪",desc:"Pack price varies by brand"},
+{id:12,name:"Banana (6 pcs)",cat:"Grocery",price:35,emoji:"🍌",desc:"Seasonal availability"}
+];
+let products=JSON.parse(localStorage.getItem("bl_products")||"null")||baseProducts;
+let cart=JSON.parse(localStorage.getItem("bl_cart")||"{}");
+let activeCat="All",adminTab="orders";
+let orders=JSON.parse(localStorage.getItem("bl_orders")||"[]");
+const rupee=n=>"₹"+Number(n).toLocaleString("en-IN");
+function save(){localStorage.setItem("bl_products",JSON.stringify(products));localStorage.setItem("bl_cart",JSON.stringify(cart));localStorage.setItem("bl_orders",JSON.stringify(orders))}
+function initChips(){let cats=["All","Grocery","Food"];document.getElementById("chips").innerHTML=cats.map(c=>`<button class="chip ${c===activeCat?'active':''}" onclick="activeCat='${c}';initChips();renderProducts()">${c==="All"?"✨":c==="Grocery"?"🛒":"🍽️"} ${c}</button>`).join("")}
+function renderProducts(){let q=document.getElementById("search").value.toLowerCase();let list=products.filter(p=>(activeCat==="All"||p.cat===activeCat)&&(p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)));document.getElementById("sectionTitle").textContent=activeCat==="All"?"Popular near you":activeCat+" items";document.getElementById("itemCount").textContent=list.length+" items";document.getElementById("products").innerHTML=list.length?list.map(p=>`<article class="product"><div class="pemoji">${p.emoji||"🛍️"}</div><div class="pbody"><div class="tag">${p.cat}</div><h4>${esc(p.name)}</h4><p>${esc(p.desc||"Local item")}</p><div class="pfoot"><span class="price">${rupee(p.price)}</span><button class="add" onclick="addCart(${p.id})">+ Add</button></div></div></article>`).join(""):`<div class="empty">No items found. Try another search.</div>`}
+function addCart(id){cart[id]=(cart[id]||0)+1;save();renderCart();document.getElementById("orderMsg").textContent=""}
+function changeQty(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];save();renderCart()}
+function cartData(){return Object.entries(cart).map(([id,q])=>({p:products.find(x=>x.id===Number(id)),q})).filter(x=>x.p)}
+function renderCart(){let items=cartData();let count=items.reduce((a,x)=>a+x.q,0);let subtotal=items.reduce((a,x)=>a+x.p.price*x.q,0);document.getElementById("cartCount").textContent=count;document.getElementById("cartItems").innerHTML=items.length?items.map(({p,q})=>`<div class="cartline"><div><strong>${esc(p.name)}</strong><div class="muted">${rupee(p.price)} each</div></div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><b>${q}</b><button onclick="changeQty(${p.id},1)">+</button></div><strong>${rupee(p.price*q)}</strong></div>`).join(""):`<div class="empty">Your cart is empty. Add something tasty or useful.</div>`;document.getElementById("total").textContent=rupee(subtotal);return {items,subtotal}}
+function showCart(){document.getElementById("cartPanel").scrollIntoView({behavior:"smooth"})}
+function placeOrder(){let {items,subtotal}=renderCart();let name=document.getElementById("custName").value.trim(),phone=document.getElementById("custPhone").value.trim(),address=document.getElementById("custAddress").value.trim();if(!items.length){msg("Please add at least one item.");return}if(!name||!phone||!address){msg("Please enter your name, phone number and full address.");return}if(!/^[0-9+\s()-]{8,16}$/.test(phone)){msg("Please check the phone number.");return}let order={id:"BL"+Date.now().toString().slice(-7),name,phone,address,payment:document.getElementById("payment").value,slot:document.getElementById("deliverySlot").value,notes:document.getElementById("notes").value.trim(),items:items.map(({p,q})=>({name:p.name,price:p.price,qty:q,cat:p.cat})),total:subtotal,status:"New",created:new Date().toLocaleString()};orders.unshift(order);cart={};save();renderCart();renderAdmin();msg("Demo order "+order.id+" saved on this device. No shop or delivery worker has been notified.");}
+function msg(t){document.getElementById("orderMsg").textContent=t}
+function renderAdmin(){let host=document.getElementById("adminOrders");if(adminTab!=="orders")return;host.innerHTML=orders.length?orders.map(o=>`<div class="ordercard"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><strong>Order ${esc(o.id)}</strong><span class="status">${esc(o.status)}</span></div><h4>${esc(o.name)} · ${rupee(o.total)}</h4><div class="muted">${esc(o.created)} · ${esc(o.phone)}<br>${esc(o.address)}<br>${o.items.map(i=>esc(i.name)+" × "+i.qty).join(", ")}<br>Payment: ${esc(o.payment)} · ${esc(o.slot)}${o.notes?"<br>Note: "+esc(o.notes):""}</div><div class="orderactions"><button class="secondary" onclick="advance('${o.id}')">Next status</button><button class="secondary" onclick="deleteOrder('${o.id}')">Delete</button></div></div>`).join(""):`<div class="empty">No demo orders yet.</div>`}
+function advance(id){let o=orders.find(x=>x.id===id);if(!o)return;let steps=["New","Accepted","Preparing / Picking","Out for delivery","Delivered"];o.status=steps[(steps.indexOf(o.status)+1)%steps.length];save();renderAdmin()}
+function deleteOrder(id){orders=orders.filter(x=>x.id!==id);save();renderAdmin()}
+function setAdminTab(tab){adminTab=tab;document.getElementById("tabOrders").classList.toggle("active",tab==="orders");document.getElementById("tabManage").classList.toggle("active",tab==="manage");document.getElementById("adminOrders").hidden=tab!=="orders";document.getElementById("manageItems").hidden=tab!=="manage";if(tab==="orders")renderAdmin()}
+function addProduct(){let name=document.getElementById("newName").value.trim(),price=Number(document.getElementById("newPrice").value),cat=document.getElementById("newCat").value,emoji=document.getElementById("newEmoji").value.trim()||"🛍️";if(!name||price<=0){alert("Enter a product name and valid price.");return}products.push({id:Math.max(0,...products.map(p=>p.id))+1,name,price,cat,emoji,desc:"Added for demo"});save();renderProducts();document.getElementById("newName").value="";document.getElementById("newPrice").value="";document.getElementById("newEmoji").value="";alert("Demo product added. Update prices before real use.")}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+initChips();renderProducts();renderCart();renderAdmin();
+</script>
+</body>
+</html>
